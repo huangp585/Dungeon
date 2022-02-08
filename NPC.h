@@ -1,36 +1,38 @@
 #ifndef NPC_H_INCLUDED
 #define NPC_H_INCLUDED
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include "GameCharacter.h"
-#include "Player.h"
-#include "Item.h"
+#include<iostream>
+#include<string>
+#include<vector>
+#include"Item.h"
+#include"GameCharacter.h"
+
+class Player;
 
 using namespace std;
 
-class NPC: public GameCharacter
-{
+class NPC :public GameCharacter {
 private:
-    string script;
-    vector<Item> commodity;
+	string script;
+	vector<Item> commodity;
+	Item* sellitem(int);//used in triggerEvent
+
+	/*print all the Item in this NPC*/
 public:
-    NPC();
-    NPC(string, string, vector<Item>);
-    void listCommodity(); /*print all the Item in this NPC*/
+	NPC();
+	NPC(string, string, vector<Item>);
 
-    /* Virtual function that you need to complete   */
-    /* In NPC, this function should deal with the   */
-    /* transaction in easy implementation           */
-    bool triggerEvent(Object*);
+	/* Virtual function that you need to complete   */
+	/* In NPC, this function should deal with the   */
+	/* transaction in easy implementation           */
+	bool triggerEvent(Object*);
 
-    /* Set & Get function*/
-    void setScript(string);
-    void setCommodity(vector<Item>);
-    string getScript();
-    vector<Item> getCommodity();
+	void listCommodity();//used in triggerEvent
+	/*set and get*/
+	string getScript();
+	vector<Item> getCommodity();
+	void setCommodity(vector<Item>);
+	void setScript(string s);
 };
 
-
-#endif // NPC_H_INCLUDED
+#endif

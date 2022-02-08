@@ -8,7 +8,7 @@
 #include "Item.h"
 #include "Monster.h"
 #include "NPC.h"
-#include "Player.h"
+#include "player.h"
 
 using namespace std;
 
@@ -20,16 +20,16 @@ using namespace std;
 class Record
 {
 private:
-    void savePlayer(Player*, ofstream&);
-    void saveRooms(vector<Room>&, ofstream&);
-    void loadPlayer(Player*, ifstream&);
-    void loadRooms(vector<Room>&, ifstream&);
+	void savePlayer(Player*, ofstream&);
+	void saveRooms(vector<Room*>&, ofstream&);
+	void loadPlayer(Player*, ifstream&);
+	void loadRooms(vector<Room*>&, ifstream&);
 
 public:
-    Record();
-    void saveToFile(Player*, vector<Room>&);
-    void loadFromFile(Player*, vector<Room>&);
-
+	Record();
+	void saveToFile(Player*, vector<Room*>&);
+	void loadFromFile(Player*, vector<Room*>&);
 };
 
 #endif // RECORD_H_INCLUDED
+

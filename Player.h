@@ -1,42 +1,45 @@
 #ifndef PLAYER_H_INCLUDED
 #define PLAYER_H_INCLUDED
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include "GameCharacter.h"
-#include "Room.h"
-#include "Item.h"
+#include<iostream>
+#include<string>
+#include<vector>
+#include"GameCharacter.h"
+#include"Room.h"
+#include"Item.h"
 
 using namespace std;
 
-class Item;
+class Item;//ta added;
 
-class Player: public GameCharacter
-{
+class Player : public GameCharacter {
 private:
-    Room* currentRoom;
-    Room* previousRoom;
-    vector<Item> inventory;
+	int current_index, previous_index;
+	Room* currentRoom;
+	Room* previousRoom;
+	vector<Item> inventory;
 public:
-    Player();
-    Player(string,int,int,int);
-    void addItem(Item);
-    void increaseStates(int,int,int);
-    void changeRoom(Room*);
+	Player();
+	Player(string, int, int, int);
+	void additem(Item);
+	void increaseStatus(int,int,int);
+	void changeRoom(Room*);
 
-    /* Virtual function that you need to complete   */
-    /* In Player, this function should show the     */
-    /* status of player.                            */
-    bool triggerEvent(Object*);
+	/* Virtual function that you need to complete   */
+	/* In Player, this function should show the     */
+	/* status of player.                            */
+	bool triggerEvent(Object*);
+	/*set() get ()*/
+	void setIndex(int, int);
+	void setPreviousRoom(Room*);
+	void setCurrentRoom(Room*);
+	void setInventory(vector<Item>);
 
-    /* Set & Get function*/
-    void setCurrentRoom(Room*);
-    void setPreviousRoom(Room*);
-    void setInventory(vector<Item>);
-    Room* getCurrentRoom();
-    Room* getPreviousRoom();
-    vector<Item> getInventory();
+	int getCurrentIndex();
+	int getPreviousIndex();
+	Room* getPreviousRoom();
+	Room* getCurrentRoom();
+	vector<Item> getInventory();
 };
 
-#endif // PLAYER_H_INCLUDED
+#endif
